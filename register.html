@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Registration | FitSphere</title>
+
+  <style>
+    .brand img {
+    display: block;
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    }
+
+    :root {
+      --lime: #c8ff00;
+      --black: #0d0d0d;
+      --white: #ffffff;
+      --gray: #a5a5a5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .register-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* PROMOTION SIDE */
+
+    .promo-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 55px 8%;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.88),
+          rgba(0, 0, 0, 0.35)
+        ),
+        url("images/fitness-bg.png") center / cover no-repeat;
+    }
+
+    .promo-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-right: 1px solid #252525;
+      pointer-events: none;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 27px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .brand img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+
+    .brand b {
+        color: #C8FF00;
+        font-weight: 800;
+    }
+
+    .brand span {
+        color: #FFFFFF;
+    }
+
+    .promo-content {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      padding-top: 45px;
+    }
+
+    .eyebrow {
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 22px;
+    }
+
+    .promo-content h1 {
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 0.98;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+
+    .promo-content h1 span {
+      display: block;
+      color: var(--lime);
+      font-size: 1.15em;
+    }
+
+    .promo-description {
+      max-width: 410px;
+      color: #dedede;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-top: 25px;
+    }
+
+    .promo-description strong {
+      color: var(--lime);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 38px;
+      max-width: 460px;
+    }
+
+    .benefit {
+      border-left: 2px solid var(--lime);
+      padding-left: 12px;
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .benefit p {
+      color: #bdbdbd;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .promo-note {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 35px;
+      padding: 13px 20px;
+      border: 1px solid var(--lime);
+      border-radius: 6px;
+      color: var(--lime);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* REGISTRATION SIDE */
+
+    .form-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 8% 45px;
+      position: relative;
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(200, 255, 0, 0.07),
+          transparent 35%
+        ),
+        var(--black);
+    }
+
+    .back-home {
+      position: absolute;
+      top: 30px;
+      right: 8%;
+      border: 1px solid #555;
+      padding: 11px 17px;
+      border-radius: 30px;
+      color: #ddd;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .back-home:hover {
+      border-color: var(--lime);
+      color: var(--lime);
+    }
+
+    .register-card {
+      width: 150%;
+      max-width: 450px;
+      padding: 50px;
+      background: rgba(23, 23, 23, 0.94);
+      border: 1px solid #303030;
+      border-radius: 18px;
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
+    }
+    
+    .register-card-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .register-card-logo img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+    }
+
+    .register-card-logo span {
+        color: #FFFFFF;
+    }
+
+    .register-card-logo b {
+        color: #C8FF00;
+    }
+
+    .register-logo {
+      text-align: center;
+      font-size: 29px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .register-logo span {
+      color: var(--lime);
+    }
+
+    .register-tagline {
+      text-align: center;
+      margin-top: 9px;
+      color: var(--gray);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .form-heading {
+      margin-top: 35px;
+      font-size: 29px;
+      text-align: center;
+    }
+
+    .form-subtitle {
+      text-align: center;
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 10px;
+      margin-bottom: 28px;
+    }
+
+    
+    .form-label {
+        display: block;
+        font-size: 13px;
+        margin: 17px 0 8px;
+        color: #e5e5e5;
+    }
+
+
+    .form-input {
+      width: 100%;
+      padding: 15px;
+      color: white;
+      background: #222;
+      border: 1px solid #414141;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--lime);
+    }
+
+    .form-input::placeholder {
+      color: #888;
+    }
+
+    .create-button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 16px;
+      background: var(--lime);
+      color: #101010;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .create-button:hover {
+      background: #d9ff55;
+      transform: translateY(-1px);
+    }
+
+    .create-button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+      transform: none;
+    }
+
+    .form-message {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .login-prompt {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .login-prompt a {
+      color: var(--lime);
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    .login-prompt a:hover {
+      text-decoration: underline;
+    }
+
+    .form-footer {
+      color: #686868;
+      font-size: 11px;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .register-page {
+        grid-template-columns: 1fr;
+      }
+
+      .promo-section {
+        min-height: 600px;
+        padding: 110px 8% 45px;
+      }
+
+      .brand {
+        top: 28px;
+        left: 8%;
+      }
+
+      .promo-content h1 {
+        font-size: clamp(48px, 10vw, 70px);
+      }
+
+      .form-section {
+        min-height: auto;
+        padding: 100px 6% 50px;
+      }
+
+      .back-home {
+        top: 28px;
+        right: 6%;
+      }
+
+      .register-card {
+        padding: 30px 24px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .benefits {
+        gap: 9px;
+      }
+
+      .benefit {
+        padding-left: 8px;
+      }
+
+      .benefit strong {
+        font-size: 10px;
+      }
+
+      .benefit p {
+        font-size: 11px;
+      }
+    }
+
+    .password-wrapper {
+        position: relative;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .password-wrapper .form-input {
+        width: 100%;
+        padding-right: 70px;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #c8ff00;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .toggle-password:hover {
+        color: #ffffff;
+    }
+
+    
+    .create-button:disabled {
+        opacity: 0.7;
+        cursor: wait;
+    }
+
+    .create-button .loader {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #101010;
+        border-top-color: transparent;
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+        animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="register-page">
+
+    <!-- FREE REGISTRATION PROMOTION -->
+    <section class="promo-section">
+
+      <a href="index.html" class="brand">
+          <img src="images/fitsphere-logo.png" alt="FitSphere Logo">
+          <span><b>Fit</b>Sphere</span>
+      </a>
+
+      <div class="promo-content">
+        <p class="eyebrow">
+          YOUR FITNESS. YOUR JOURNEY. YOUR SPHERE.
+        </p>
+
+        <h1>
+          Start Strong.
+          <span>Join Free.</span>
+        </h1>
+
+        <p class="promo-description">
+          Your fitness journey starts here.
+          Create your FitSphere account with
+          <strong>FREE REGISTRATION</strong> and take
+          the first step toward your goals.
+        </p>
+
+        <div class="benefits">
+          <div class="benefit">
+            <strong>GET FIT</strong>
+            <p>Build better habits.</p>
+          </div>
+
+          <div class="benefit">
+            <strong>FEEL GOOD</strong>
+            <p>Keep moving forward.</p>
+          </div>
+
+          <div class="benefit">
+            <strong>BE YOUR BEST</strong>
+            <p>Reach your goals.</p>
+          </div>
+        </div>
+
+        <div class="promo-note">
+          NO REGISTRATION FEE. JUST GET STARTED.
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTRATION FORM -->
+    <section class="form-section">
+     
+    <div class="register-container">
+
+    <div class="register-card">
+
+        <div class="register-card-logo">
+            <img src="images/fitsphere-logo.png" alt="FitSphere Logo">
+            <span><b>Fit</b>Sphere</span>
+        </div>
+
+        <p class="register-tagline">
+          YOUR FITNESS. YOUR JOURNEY. YOUR SPHERE.
+        </p>
+
+        <h2 class="form-heading">Create Account</h2>
+
+        <p class="form-subtitle">
+          Join FitSphere today. Registration is free!
+        </p>
+
+        <form id="registerForm">
+          <label class="form-label" for="username">
+            Username
+          </label>
+
+          <input
+            class="form-input"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Choose a username"
+            minlength="3"
+            maxlength="30"
+            pattern="[A-Za-z0-9_]+"
+            title="Use 3–30 letters, numbers, or underscores."
+            autocomplete="username"
+            required
+          >
+
+          
+          <div class="password-wrapper">
+              <input
+                  class="form-input"
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="At least 8 characters"
+                  minlength="8"
+                  autocomplete="new-password"
+                  required
+              >
+
+              <button
+                  type="button"
+                  id="togglePassword"
+                  class="toggle-password"
+                  aria-controls="password"
+                  aria-label="Show password"
+              >Show</button>
+          </div>
+
+
+          <button
+            class="create-button"
+            type="submit"
+            id="submitBtn"
+          >
+            CREATE FREE ACCOUNT
+          </button>
+
+          <p
+            id="message"
+            class="form-message"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+
+        <p class="form-footer">
+          Start your journey with FitSphere.
+        </p>
+      </div>
+      </div>
+    </section>
+
+  </main>
+
+ 
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const registerForm = document.getElementById("registerForm");
+      const passwordInput = document.getElementById("password");
+      const togglePassword = document.getElementById("togglePassword");
+      const submitBtn = document.getElementById("submitBtn");
+      const statusMessage = document.getElementById("message");
+
+      // SHOW / HIDE PASSWORD
+      togglePassword.addEventListener("click", function () {
+          const isPasswordHidden = passwordInput.type === "password";
+
+          passwordInput.type = isPasswordHidden ? "text" : "password";
+          togglePassword.textContent = isPasswordHidden ? "Hide" : "Show";
+          togglePassword.setAttribute(
+              "aria-label",
+              isPasswordHidden ? "Hide password" : "Show password"
+          );
+      });
+
+      // CREATE ACCOUNT
+      registerForm.addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          if (!registerForm.checkValidity()) {
+              registerForm.reportValidity();
+              return;
+          }
+
+          const username = document.getElementById("username").value.trim();
+          const password = passwordInput.value;
+
+          // Prevent duplicate submissions
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+              '<span class="loader"></span> CREATING ACCOUNT...';
+
+          statusMessage.textContent = "";
+          statusMessage.style.color = "#c8ff00";
+
+          try {
+              /*
+              * Connect your existing Google Apps Script registration
+              * endpoint here. This example uses the URL from your
+              * earlier FitSphere setup.
+              */
+              const SCRIPT_URL =
+                  "https://script.google.com/macros/s/AKfycbxSnjpfOrLLZ-LKGPF1SY45o_2P_BXN8X7-97uWsQYwlfaxQsGjd3voIKOYMVf6c2M/exec";
+
+              const formData = new URLSearchParams();
+              formData.append("username", username);
+              formData.append("password", password);
+
+             
+              await fetch(SCRIPT_URL, {
+                  method: "POST",
+                  mode: "no-cors",
+                  body: JSON.stringify({
+                      username: username,
+                      password: password
+                  })
+              });
+
+              statusMessage.textContent =
+                  "Registration request sent! Redirecting to your dashboard...";
+              statusMessage.style.color = "#c8ff00";
+
+              submitBtn.textContent = "ACCOUNT CREATED!";
+
+              setTimeout(function () {
+                  window.location.href = "dashboard.html";
+              }, 1500);
+
+          } catch (error) {
+              console.error("Registration error:", error);
+
+              statusMessage.style.color = "#ff6b6b";
+              statusMessage.textContent =
+                  "Unable to send the request. Please check your internet connection and try again.";
+
+              submitBtn.disabled = false;
+              submitBtn.textContent = "CREATE FREE ACCOUNT";
+          }
+      });
+  });
+  </script>
+</body>
+</html>
+
